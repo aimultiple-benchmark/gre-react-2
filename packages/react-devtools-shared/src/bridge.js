@@ -263,7 +263,7 @@ type FrontendEvents = {
   savedPreferences: [SavedPreferencesParams],
   setTraceUpdatesEnabled: [boolean],
   shutdown: [],
-  startInspectingHost: [],
+  startInspectingHost: [boolean],
   startProfiling: [StartProfilingParams],
   stopInspectingHost: [boolean],
   scrollToHostInstance: [ScrollToHostInstance],
