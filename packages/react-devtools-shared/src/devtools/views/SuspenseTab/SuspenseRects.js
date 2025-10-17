@@ -35,11 +35,23 @@ function ScaledRect({
   className,
   rect,
   visible,
+<<<<<<< ours
+=======
+  suspended,
+  selected,
+  adjust,
+>>>>>>> theirs
   ...props
 }: {
   className: string,
   rect: Rect,
   visible: boolean,
+<<<<<<< ours
+=======
+  suspended: boolean,
+  selected?: boolean,
+  adjust?: boolean,
+>>>>>>> theirs
   ...
 }): React$Node {
   const viewBox = useContext(ViewBox);
@@ -53,6 +65,11 @@ function ScaledRect({
       {...props}
       className={styles.SuspenseRectsScaledRect + ' ' + className}
       data-visible={visible}
+<<<<<<< ours
+=======
+      data-suspended={suspended}
+      data-selected={selected}
+>>>>>>> theirs
       style={{
         width,
         height,
@@ -145,7 +162,13 @@ function SuspenseRects({
     <ScaledRect
       rect={boundingBox}
       className={styles.SuspenseRectsBoundary}
+<<<<<<< ours
       visible={visible}>
+=======
+      visible={visible}
+      selected={selected}
+      suspended={suspense.isSuspended}>
+>>>>>>> theirs
       <ViewBox.Provider value={boundingBox}>
         {visible &&
           suspense.rects !== null &&
@@ -155,7 +178,11 @@ function SuspenseRects({
                 key={index}
                 className={styles.SuspenseRectsRect}
                 rect={rect}
+<<<<<<< ours
                 data-highlighted={selected}
+=======
+                adjust={true}
+>>>>>>> theirs
                 onClick={handleClick}
                 onDoubleClick={handleDoubleClick}
                 onPointerOver={handlePointerOver}
@@ -174,6 +201,13 @@ function SuspenseRects({
             })}
           </ScaledRect>
         )}
+        {selected ? (
+          <ScaledRect
+            className={styles.SuspenseRectOutline}
+            rect={boundingBox}
+            adjust={true}
+          />
+        ) : null}
       </ViewBox.Provider>
     </ScaledRect>
   );
