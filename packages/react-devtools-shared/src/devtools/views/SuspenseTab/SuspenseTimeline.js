@@ -60,6 +60,7 @@ function SuspenseTimelineInput() {
     switchSuspenseNode(timelineIndex);
   }
 
+<<<<<<< ours
   function handleHoverSegment(hoveredValue: number) {
     const suspenseID = timeline[hoveredValue];
     if (suspenseID === undefined) {
@@ -68,6 +69,20 @@ function SuspenseTimelineInput() {
       );
     }
     highlightHostInstance(suspenseID);
+=======
+  function handleHoverSegment(hoveredIndex: number) {
+    const nextSelectedSuspenseID = timeline[hoveredIndex];
+    suspenseTreeDispatch({
+      type: 'HOVER_TIMELINE_FOR_ID',
+      payload: nextSelectedSuspenseID,
+    });
+  }
+  function handleUnhoverSegment() {
+    suspenseTreeDispatch({
+      type: 'HOVER_TIMELINE_FOR_ID',
+      payload: -1,
+    });
+>>>>>>> theirs
   }
 
   function skipPrevious() {

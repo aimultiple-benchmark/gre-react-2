@@ -55,7 +55,6 @@
   background: var(--color-component-name);
 }
 
-.SuspenseScrubberStepHighlight > .SuspenseScrubberBead,
-.SuspenseScrubberStep:hover > .SuspenseScrubberBead {
+.SuspenseScrubberStepHighlight > .SuspenseScrubberBead {
   height: 0.75rem;
 }

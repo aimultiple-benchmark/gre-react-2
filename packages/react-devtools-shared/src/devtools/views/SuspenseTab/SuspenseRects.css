@@ -3,6 +3,14 @@
   cursor: pointer;
   outline: 1px solid var(--color-component-name);
   border-radius: 0.25rem;
+<<<<<<< ours
+=======
+  background-color: color-mix(in srgb, var(--color-transition) 5%, transparent);
+}
+
+.SuspenseRectsContainer[data-hovered='true'] {
+  background-color: color-mix(in srgb, var(--color-transition) 15%, transparent);
+>>>>>>> theirs
 }
 
 .SuspenseRectsContainer[data-highlighted='true'] {
@@ -50,8 +58,26 @@
 }
 
 /* highlight this boundary */
+<<<<<<< ours
 .SuspenseRectsBoundary:hover:not(:has(.SuspenseRectsBoundary:hover)) > .SuspenseRectsRect, .SuspenseRectsBoundary[data-highlighted='true'] > .SuspenseRectsRect {
   background-color: var(--color-background-hover);
+=======
+.SuspenseRectsBoundary[data-hovered='true'] > .SuspenseRectsRect {
+  background-color: color-mix(in srgb, var(--color-background) 50%, var(--color-suspense) 50%);
+  transition: background-color 0.2s ease-out;
+}
+
+.SuspenseRectsBoundary[data-selected='true'] {
+  box-shadow: var(--elevation-4);
+}
+
+.SuspenseRectOutline {
+  outline-color: var(--color-suspense);
+  outline-style: solid;
+  outline-width: 4px;
+  border-radius: 0.125rem;
+  pointer-events: none;
+>>>>>>> theirs
 }
 
 .SuspenseRectsRect[data-highlighted='true'] {
