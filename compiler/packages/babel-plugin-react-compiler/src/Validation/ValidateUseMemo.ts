@@ -111,3 +111,53 @@ export function validateUseMemo(fn: HIRFunction): Result<void, CompilerError> {
   }
   return errors.asResult();
 }
+<<<<<<< ours
+=======
+
+function validateNoContextVariableAssignment(
+  fn: HIRFunction,
+  errors: CompilerError,
+): void {
+  const context = new Set(fn.context.map(place => place.identifier.id));
+  for (const block of fn.body.blocks.values()) {
+    for (const instr of block.instructions) {
+      const value = instr.value;
+      switch (value.kind) {
+        case 'StoreContext': {
+          if (context.has(value.lvalue.place.identifier.id)) {
+            errors.pushDiagnostic(
+              CompilerDiagnostic.create({
+                category: ErrorCategory.UseMemo,
+                reason:
+                  'useMemo() callbacks may not reassign variables declared outside of the callback',
+                description:
+                  'useMemo() callbacks must be pure functions and cannot reassign variables defined outside of the callback function',
+                suggestions: null,
+              }).withDetails({
+                kind: 'error',
+                loc: value.lvalue.place.loc,
+                message: 'Cannot reassign variable',
+              }),
+            );
+          }
+          break;
+        }
+      }
+    }
+  }
+}
+
+function hasNonVoidReturn(func: HIRFunction): boolean {
+  for (const [, block] of func.body.blocks) {
+    if (block.terminal.kind === 'return') {
+      if (
+        block.terminal.returnVariant === 'Explicit' ||
+        block.terminal.returnVariant === 'Implicit'
+      ) {
+        return true;
+      }
+    }
+  }
+  return false;
+}
+>>>>>>> theirs
