@@ -2,7 +2,11 @@
   padding: 0.25rem;
 }
 
+<<<<<<< ours
 .CallSite, .IgnoredCallSite {
+=======
+.CallSite, .BuiltInCallSite {
+>>>>>>> theirs
   display: block;
   padding-left: 1rem;
 }

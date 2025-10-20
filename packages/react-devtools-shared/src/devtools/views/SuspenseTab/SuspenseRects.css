@@ -26,6 +26,24 @@
    overflow: hidden;
 }
 
+.SuspenseRectsTitle {
+  pointer-events: none;
+  color: var(--color-text);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: var(--font-size-sans-small);
+  line-height: var(--font-size-sans-small);
+  padding: .25rem;
+  container-type: size;
+  container-name: title;
+}
+
+@container title (width < 30px) or (height < 12px) {
+  .SuspenseRectsTitle > span {
+    display: none;
+  }
+}
+
 .SuspenseRectsScaledRect[data-visible='false'] > .SuspenseRectsBoundaryChildren {
   overflow: initial;
 }
@@ -50,8 +68,26 @@
 }
 
 /* highlight this boundary */
+<<<<<<< ours
 .SuspenseRectsBoundary:hover:not(:has(.SuspenseRectsBoundary:hover)) > .SuspenseRectsRect, .SuspenseRectsBoundary[data-highlighted='true'] > .SuspenseRectsRect {
   background-color: var(--color-background-hover);
+=======
+.SuspenseRectsBoundary[data-hovered='true'] > .SuspenseRectsRect {
+  background-color: color-mix(in srgb, var(--color-background) 50%, var(--color-suspense) 50%);
+  transition: background-color 0.2s ease-out;
+}
+
+.SuspenseRectsBoundary[data-selected='true'][data-visible='true'] {
+  box-shadow: var(--elevation-4);
+}
+
+.SuspenseRectOutline {
+  outline-color: var(--color-suspense);
+  outline-style: solid;
+  outline-width: 4px;
+  border-radius: 0.125rem;
+  pointer-events: none;
+>>>>>>> theirs
 }
 
 .SuspenseRectsRect[data-highlighted='true'] {
