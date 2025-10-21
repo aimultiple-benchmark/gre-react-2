@@ -80,8 +80,10 @@ export function CallSiteView({
           </span>
         </>
       )}
-
-      <ElementBadges environmentName={environmentName} />
+      <ElementBadges
+        className={styles.ElementBadges}
+        environmentName={environmentName}
+      />
     </div>
   );
 }
